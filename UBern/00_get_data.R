@@ -59,7 +59,7 @@ names(defunciones) <- c(
   )
 study_area <- c(
     "MADRE DE DIOS ","UCAYALI","JUNIN","HUANCAVELICA",
-    "ICA","AYACUCHO","APURIMAC","CUSCO","PASCO","AREQUIPA"
+    "ICA","AYACUCHO","APURIMAC","CUSCO","PASCO","AREQUIPA",
     "PUNO")
 
 ubern_db <- defunciones %>%
