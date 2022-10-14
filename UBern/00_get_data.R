@@ -4,12 +4,12 @@ library(vroom)
 
 download.file(
   url = "https://drive.minsa.gob.pe/s/XJoxGPW2wBmkSAD/download",
-  destfile = "./datos_abiertos/data/defunciones.csv",
+  destfile = "./UBern/data/defunciones.csv",
   method = 'curl'
 )
 
 
-defunciones <- vroom("datos_abiertos/data/defunciones.csv",
+defunciones <- vroom("UBern/data/defunciones.csv",
   col_types = cols(
     Nº = col_integer(),
     `TIPO SEGURO` = col_factor(),
