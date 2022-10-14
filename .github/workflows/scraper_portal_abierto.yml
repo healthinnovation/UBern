@@ -27,7 +27,7 @@ jobs:
           R -e 'install.packages("Rcurl")'
       # Run R script
       - name: Scrape
-        run: Rscript ./Ubern/00_get_data.R
+        run: Rscript ./UBern/00_get_data.R
 
       - name: Commit files
         run: |
