@@ -6,44 +6,9 @@ download.file(
   url = "https://drive.minsa.gob.pe/s/XJoxGPW2wBmkSAD/download",
   destfile = "UBern/data/defunciones.csv",
   method = 'curl'
-)
-
-defunciones <- vroom("UBern/data/defunciones.csv",
-  col_types = cols(
-    Nº = col_integer(),
-    `TIPO SEGURO` = col_factor(),
-    SEXO = col_factor(),
-    EDAD = col_integer(),
-    `TIEMPO EDAD` = col_character(),
-    `ESTADO CIVIL` = col_factor(),
-    `NIVEL DE INSTRUCCIÓN` = col_factor(),
-    ETNIA = col_factor() , 
-    `COD# UBIGEO DOMICILIO` = col_character(), 
-    `PAIS DOMICILIO` = col_character(),
-    `DEPARTAMENTO DOMICILIO` = col_factor(),
-    `PROVINCIA DOMICILIO` = col_factor(),
-    `DISTRITO DOMICILIO` = col_character(), 
-    FECHA = col_date(format = "%Y-%m-%d"),
-    AÑO = col_integer(),
-    MES = col_integer(),
-    `TIPO LUGAR` = col_character(),
-    INSTITUCION = col_character(),
-    `MUERTE VIOLENTA` = col_character(),
-     NECROPSIA = col_factor(),
-    `DEBIDO A (CAUSA A)` = col_character(),
-    `CAUSA A (CIE-X)`  = col_character(),
-    `DEBIDO A (CAUSA B)` = col_character(), 
-    `CAUSA B (CIE-X)` = col_character(), 
-    `DEBIDO A (CAUSA C)` = col_character(), 
-    `CAUSA C (CIE-X)`  = col_character(), 
-    `DEBIDO A (CAUSA D)` = col_character(), 
-    `CAUSA D (CIE-X)` = col_character(), 
-    `DEBIDO A (CAUSA E)` = col_character(),
-    `CAUSA E (CIE-X)` = col_character(),
-    `DEBIDO A (CAUSA F)` = col_character(), 
-    `CAUSA F (CIE-X)` = col_character(),
   )
-)
+  
+defunciones <- read.csv("UBern/data/defunciones.csv",sep = "|")
 
 names(defunciones) <- c(
   "ID","TIPO_SEGURO","SEXO","EDAD","TIEMPO_EDAD",
@@ -69,5 +34,5 @@ saveRDS(
   ubern_db,
   file = paste0("UBern/data/","ubern_db.rds")
 )
-
+rm(defunciones)
 file.remove('UBern/data/defunciones.csv')
