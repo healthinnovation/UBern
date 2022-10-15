@@ -25,7 +25,7 @@ jobs:
           R -e 'install.packages("dplyr")'
           R -e 'install.packages("vroom")'
           R -e 'install.packages("Rcurl")'
-          R -e 'install.packages("purrr")'
+          R -e 'install.packages("magrittr")'
 
       # Run R script
       - name: Scrape
