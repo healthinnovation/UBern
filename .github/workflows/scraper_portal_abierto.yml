@@ -22,8 +22,6 @@ jobs:
             ${{ runner.os }}-renv-
       - name: Install packages
         run: |
-          R -e 'install.packages("dplyr")'
-          R -e 'install.packages("vroom")'
           R -e 'install.packages("Rcurl")'
 
       # Run R script
