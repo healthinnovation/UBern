@@ -7,11 +7,11 @@ download.file(
   method = 'curl'
   )
 
-ubers <- vroom("./data/defunciones.csv")
+ubers <- vroom("./data/defunciones.csv", show_col_types = FALSE)
 
 saveRDS(
   ubers,
-  file = "./data/ubers.rds")
+  file = "./data/ubers.rds"
 )
 
 file.remove('./data/casos_positivos.csv')
