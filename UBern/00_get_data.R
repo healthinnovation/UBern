@@ -8,7 +8,7 @@ download.file(
   method = 'curl'
   )
   
-defunciones <- read.csv("UBern/data/defunciones.csv",sep = "|")
+defunciones <-vroom("UBern/data/defunciones.csv")
 
 names(defunciones) <- c(
   "ID","TIPO_SEGURO","SEXO","EDAD","TIEMPO_EDAD",
