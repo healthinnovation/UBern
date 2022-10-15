@@ -1,4 +1,4 @@
-library(purrr)
+library(magrittr)
 library(dplyr)
 library(vroom)
 
