@@ -8,7 +8,7 @@ download.file(
   method = 'curl'
   )
   
-defunciones <-vroom("UBern/data/defunciones.csv")
+defunciones <- vroom("UBern/data/defunciones.csv")
 
 study_area <- c(
     "MADRE DE DIOS ","UCAYALI","JUNIN","HUANCAVELICA",
@@ -16,7 +16,7 @@ study_area <- c(
     "PUNO")
 
 ubern_db <- defunciones %>%
-  filter(`DEPARTAMENTO DOMICILIO` %in% study_area)
+  dplyr::filter(`DEPARTAMENTO DOMICILIO` %in% study_area)
 
 saveRDS(
   ubern_db,
