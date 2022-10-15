@@ -8,19 +8,28 @@ download.file(
   method = 'curl'
   )
   
-defunciones <- vroom("UBern/data/defunciones.csv")
+defunciones <- vroom(
+  "UBern/data/defunciones.csv",
+  show_col_types = FALSE
+  )
 
+new_names <- names(defunciones) %>% 
+  gsub("Ñ","N",.) %>% 
+  gsub("[^a-zA-Z]"," ",.) %>% 
+  gsub(" ","", .)
+
+names(defunciones) <- new_names
 study_area <- c(
     "MADRE DE DIOS ","UCAYALI","JUNIN","HUANCAVELICA",
     "ICA","AYACUCHO","APURIMAC","CUSCO","PASCO","AREQUIPA",
     "PUNO")
 
 ubern_db <- defunciones %>%
-  filter(`DEPARTAMENTO DOMICILIO` %in% study_area)
+  filter(DEPARTAMENTODOMICILIO %in% study_area)
 
 saveRDS(
   ubern_db,
   file = paste0("UBern/data/","ubern_db.rds")
 )
-rm(defunciones)
+
 file.remove('UBern/data/defunciones.csv')
