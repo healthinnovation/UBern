@@ -16,7 +16,7 @@ study_area <- c(
     "PUNO")
 
 ubern_db <- defunciones %>%
-  dplyr::filter(`DEPARTAMENTO DOMICILIO` %in% study_area)
+  filter(`DEPARTAMENTO DOMICILIO` %in% study_area)
 
 saveRDS(
   ubern_db,
