@@ -34,7 +34,7 @@ jobs:
           today=$(date +"%Y-%m-%d")
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add datos_abiertos/data/*
+          git add UBern/data/*
           git commit -am "updated datasets ${today}"
           git push origin main
         env:
