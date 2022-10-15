@@ -1,4 +1,3 @@
-library(magrittr)
 library(dplyr)
 library(vroom)
 
@@ -13,10 +12,7 @@ defunciones <- vroom(
   show_col_types = FALSE
   )
 
-new_names <- names(defunciones) %>% 
-  gsub("Ñ","N",.) %>% 
-  gsub("[^a-zA-Z]"," ",.) %>% 
-  gsub(" ","", .)
+new_names <- gsub(" ","",gsub("[^a-zA-Z]"," ",gsub("Ñ","N",names(defunciones))))
 
 names(defunciones) <- new_names
 study_area <- c(
@@ -24,8 +20,10 @@ study_area <- c(
     "ICA","AYACUCHO","APURIMAC","CUSCO","PASCO","AREQUIPA",
     "PUNO")
 
-ubern_db <- defunciones %>%
-  filter(DEPARTAMENTODOMICILIO %in% study_area)
+ubern_db <- filter(
+  defunciones,
+  DEPARTAMENTODOMICILIO %in% study_area
+  )
 
 saveRDS(
   ubern_db,
