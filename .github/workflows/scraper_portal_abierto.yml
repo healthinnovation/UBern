@@ -23,7 +23,8 @@ jobs:
       - name: Install packages
         run: |
           R -e 'install.packages("Rcurl")'
-
+          R -e 'install.packages("vroom")'
+          R -e 'install.packages("dplyr")'
       # Run R script
       - name: Scrape
         run: Rscript ./UBern/00_get_data.R
