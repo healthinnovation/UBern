@@ -1,5 +1,6 @@
 library(dplyr)
 library(vroom)
+library(magrittr)
 
 download.file(
   url = "https://drive.minsa.gob.pe/s/XJoxGPW2wBmkSAD/download",
@@ -7,11 +8,27 @@ download.file(
   method = 'curl'
   )
 
-ubers <- vroom("./data/defunciones.csv", show_col_types = FALSE)
+defunciones <- vroom(
+  "./data/defunciones.csv",
+  show_col_types = FALSE)
+
+new_names <- names(defunciones) %>% 
+  gsub("Ñ","N",.) %>% 
+  gsub("[^a-zA-Z]"," ",.) %>% 
+  gsub(" ","", .)
+
+names(defunciones) <- new_names
+study_area <- c(
+  "MADRE DE DIOS ","UCAYALI","JUNIN","HUANCAVELICA",
+  "ICA","AYACUCHO","APURIMAC","CUSCO","PASCO","AREQUIPA",
+  "PUNO")
+
+ubers <- defunciones %>% 
+  filter(DEPARTAMENTODOMICILIO %in% study_area)
 
 saveRDS(
   ubers,
   file = "./data/ubers.rds"
 )
 
-file.remove('./data/casos_positivos.csv')
+file.remove('./data/defunciones.csv')
