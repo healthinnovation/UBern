@@ -10,7 +10,6 @@ download.file(
   
 defunciones <-vroom("UBern/data/defunciones.csv") %>% 
   rename(
-    ID = Nº,
     TIPO_SEGURO = `TIPO SEGURO`,
     TIEMPO_EDAD = `TIEMPO EDAD`,
     ESTADO_CIVIL = `ESTADO CIVIL`,
