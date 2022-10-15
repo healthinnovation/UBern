@@ -9,7 +9,7 @@ download.file(
   )
   
 defunciones <-vroom("UBern/data/defunciones.csv") %>% 
-  rename(
+  dplyr::rename(
     TIPO_SEGURO = `TIPO SEGURO`,
     TIEMPO_EDAD = `TIEMPO EDAD`,
     ESTADO_CIVIL = `ESTADO CIVIL`,

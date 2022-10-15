@@ -22,9 +22,11 @@ jobs:
             ${{ runner.os }}-renv-
       - name: Install packages
         run: |
-          R -e 'install.packages("tidyverse")'
+          R -e 'install.packages("dplyr")'
           R -e 'install.packages("vroom")'
           R -e 'install.packages("Rcurl")'
+          R -e 'install.packages("purrr")'
+
       # Run R script
       - name: Scrape
         run: Rscript ./UBern/00_get_data.R
