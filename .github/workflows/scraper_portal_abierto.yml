@@ -24,12 +24,8 @@ jobs:
         run: |
           R -e 'install.packages("Rcurl")'
           R -e 'install.packages("vroom")'
-<<<<<<< Updated upstream
-          R -e 'install.packages("dplyr")'
-          R -e 'install.packages("magrittr")'
-=======
           R -e 'install.packages("tidyverse")'
->>>>>>> Stashed changes
+          
       # Run R script
       - name: Scrape
         run: Rscript ./script/00_get_data.R
