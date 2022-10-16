@@ -1,6 +1,6 @@
 library(dplyr)
 library(vroom)
-library(tidyverse)
+library(tidyr)
 
 download.file(
   url = "https://drive.minsa.gob.pe/s/XJoxGPW2wBmkSAD/download",
