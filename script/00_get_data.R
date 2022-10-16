@@ -23,6 +23,7 @@ study_area <- c(
   "PUNO")
 
 ubers <- defunciones %>% 
+  drop_na(DEPARTAMENTODOMICILIO) %>% 
   filter(DEPARTAMENTODOMICILIO %in% study_area)
 
 saveRDS(

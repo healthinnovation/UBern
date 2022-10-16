@@ -25,7 +25,7 @@ jobs:
           R -e 'install.packages("Rcurl")'
           R -e 'install.packages("vroom")'
           R -e 'install.packages("tidyverse")'
-          
+
       # Run R script
       - name: Scrape
         run: Rscript ./script/00_get_data.R
