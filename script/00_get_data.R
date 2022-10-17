@@ -18,6 +18,7 @@ new_names <- names(defunciones) %>%
   gsub(" ","", .)
 
 names(defunciones) <- new_names
+names(defunciones)
 study_area <- c(
   "MADRE DE DIOS ","UCAYALI","JUNIN","HUANCAVELICA",
   "ICA","AYACUCHO","APURIMAC","CUSCO","PASCO","AREQUIPA",
