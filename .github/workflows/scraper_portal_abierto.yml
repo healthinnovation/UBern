@@ -1,22 +1,37 @@
-name: SINADEF
+name: scraping
 
-on: [push]
+# Controls when the action will run.
+on:
+  schedule:
+    - cron:  '0 13 * * *'
 
-jobs:
-  build:
-    runs-on: macOS-latest
-    if: "contains(github.event.head_commit.message, 'initial commit')"
+jobs: 
+  autoscrape:
+    # The type of runner that the job will run on
+    runs-on: macos-latest
+
+    # Load repo and install R
     steps:
-      - uses: actions/checkout@v2
-      - uses: r-lib/actions/setup-r@v1
-      - name: Install package dependencies
-        run:
-          Rscript -e "install.packages(c('tidyverse', 'vroom'))"
-      - name: Render r plot file
-        run:
-          Rscript -e "source('script/00_get_data.R')"
-      - name: Commit results
-        run: |
-          git add data/*
-          git commit -m 'Holi'
-          git push origin
+    - uses: actions/checkout@master
+    - uses: r-lib/actions/setup-r@master
+
+    # Set-up R
+    - name: Install packages
+      run: |
+        R -e 'install.packages("tidyverse")'
+        R -e 'install.packages("vroom")'
+    # Run R script
+    - name: Scrape
+      run: Rscript script/00_get_data.R
+      
+ # Add new files in data folder, commit along with other modified files, push
+    - name: Commit files
+      run: |
+        git config --local user.name actions-user
+        git config --local user.email "actions@github.com"
+        git add data/*
+        git commit -am "GH ACTION Headlines $(date)"
+        git push origin main
+      env:
+        REPO_KEY: ${{secrets.GITHUB_TOKEN}}
+        username: github-actions
