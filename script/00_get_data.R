@@ -13,8 +13,9 @@ new_names <- names(ubern_db) %>%
   gsub(" ","", .)
 
 names(ubern_db) <- new_names
+final_data <- ubern_db
 saveRDS(
-  ubern_db,
+  final_data,
   file = paste0("data/","ubern_db.rds")
 )
 
