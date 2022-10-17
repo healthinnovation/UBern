@@ -4,11 +4,11 @@ library(vroom)
 
 download.file(
   url = "https://drive.minsa.gob.pe/s/XJoxGPW2wBmkSAD/download",
-  destfile = "UBern/data/defunciones.csv",
+  destfile = "data/defunciones.csv",
   method = 'curl'
 )
 
-defunciones <- vroom("UBern/data/defunciones.csv",
+defunciones <- vroom("data/defunciones.csv",
   col_types = cols(
     Nº = col_integer(),
     `TIPO SEGURO` = col_factor(),
@@ -67,7 +67,7 @@ ubern_db <- defunciones %>%
 
 saveRDS(
   ubern_db,
-  file = paste0("UBern/data/","ubern_db.rds")
+  file = paste0("data/","ubern_db.rds")
 )
 
-file.remove('UBern/data/defunciones.csv')
+file.remove('data/defunciones.csv')
