@@ -17,7 +17,7 @@ jobs:
     - name: Install packages
       run: |
         R -e 'install.packages("tidyverse")'
-        R -e 'install.packages("vroom")'
+        R -e 'install.packages("vroom","readr")'
     # Run R script
     - name: Scrape
       run: Rscript script/00_get_data.R
