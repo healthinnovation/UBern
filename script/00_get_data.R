@@ -4,18 +4,14 @@ library(tidyverse)
 download.file(
   url = "https://drive.minsa.gob.pe/s/XJoxGPW2wBmkSAD/download",
   destfile = "data/defunciones.csv",
-  method = 'curl')
+  method = 'curl'
+  )
 
-<<<<<<< HEAD
-ubern_db <- vroom("data/defunciones.csv")
+original_db <- vroom("data/defunciones.csv")
 
-=======
-ubern_db <- vroom("data/defunciones.csv") %>%
-       rename(ANIO = AÑO)
->>>>>>> master
 saveRDS(
-  ubern_db,
-  file = paste0("data/","ubern_db.rds")
-)
+  original_db,
+  file = paste0("data/","original_db.rds")
+  )
 
 file.remove('data/defunciones.csv')
