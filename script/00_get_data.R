@@ -1,6 +1,5 @@
-library(dplyr)
+library(tidyverse)
 library(vroom)
-library(tidyr)
 
 download.file(
   url = "https://drive.minsa.gob.pe/s/XJoxGPW2wBmkSAD/download",
@@ -11,22 +10,6 @@ download.file(
 defunciones <- vroom(
   "./data/defunciones.csv",
   show_col_types = FALSE)
-
-new_names <- names(defunciones) %>% 
-  gsub("Ñ","N",.) %>% 
-  gsub("[^a-zA-Z]"," ",.) %>% 
-  gsub(" ","", .)
-
-names(defunciones) <- new_names
-names(defunciones)
-study_area <- c(
-  "MADRE DE DIOS ","UCAYALI","JUNIN","HUANCAVELICA",
-  "ICA","AYACUCHO","APURIMAC","CUSCO","PASCO","AREQUIPA",
-  "PUNO")
-
-ubers <- defunciones %>% 
-  drop_na(DEPARTAMENTODOMICILIO) %>% 
-  filter(DEPARTAMENTODOMICILIO %in% study_area)
 
 saveRDS(
   ubers,
