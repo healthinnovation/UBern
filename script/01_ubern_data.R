@@ -13,11 +13,12 @@ study_area <- c(
   "ICA","AYACUCHO","APURIMAC","CUSCO","PASCO","AREQUIPA",
   "PUNO")
 
-ubers <- original_db %>% 
+ubern <- original_db %>% 
   drop_na(DEPARTAMENTODOMICILIO) %>% 
   filter(DEPARTAMENTODOMICILIO %in% study_area)
 
 saveRDS(
-  ubers,
-  file = paste0("data/ubers-",Sys.Date(),".rds")
+  ubern,
+  file = paste0("data/ubern-",Sys.Date(),".rds")
 )
+# write_csv(data,paste0("UBern",Sys.Date(),".csv"))
