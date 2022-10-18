@@ -6,8 +6,13 @@ download.file(
   destfile = "data/defunciones.csv",
   method = 'curl')
 
+<<<<<<< HEAD
 ubern_db <- vroom("data/defunciones.csv")
 
+=======
+ubern_db <- vroom("data/defunciones.csv") %>%
+       rename(ANIO = AÑO)
+>>>>>>> master
 saveRDS(
   ubern_db,
   file = paste0("data/","ubern_db.rds")
