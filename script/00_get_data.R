@@ -7,6 +7,12 @@ download.file(
   method = 'curl')
 
 ubern_db <- vroom("data/defunciones.csv")
+new_names <- names(ubern_db) %>% 
+  gsub("Ñ","N",.) %>% 
+  gsub("[^a-zA-Z]"," ",.) %>% 
+  gsub(" ","", .)
+
+names(ubern_db) <- new_names
 saveRDS(
   ubern_db,
   file = paste0("data/","ubern_db.rds")
