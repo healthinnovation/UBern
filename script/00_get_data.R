@@ -1,19 +1,14 @@
-library(tidyverse)
-library(vroom)
+library(purrr)
+library(dplyr)
 
 download.file(
   url = "https://drive.minsa.gob.pe/s/XJoxGPW2wBmkSAD/download",
-  destfile = "./data/defunciones.csv",
+  destfile = "data/defunciones.csv",
   method = 'curl'
-  )
-
-defunciones <- vroom(
-  "./data/defunciones.csv",
-  show_col_types = FALSE)
-
+ubern_db <- vroom("data/defunciones.csv")
 saveRDS(
-  ubers,
-  file = "./data/ubers.rds"
+  ubern_db,
+  file = paste0("data/","ubern_db.rds")
 )
 
-file.remove('./data/defunciones.csv')
+file.remove('data/defunciones.csv')
