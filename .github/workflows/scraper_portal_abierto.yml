@@ -1,10 +1,10 @@
 name: scraping
 
 # Controls when the action will run.
-on:
-  schedule:
+on: [push]
+  #schedule:
     # runs tests every day at 8 am
-    - cron: "0 8 * * *"
+    #- cron: "0 8 * * *"
 
 jobs:
   autoscrape:
