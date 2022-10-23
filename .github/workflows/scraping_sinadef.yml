@@ -1,8 +1,11 @@
-on: 
-  schedule:
-    # runs tests every day at 8 am
-  - cron: "0 8 * * *"
-
+on:
+ push:
+   branches:
+      - main
+      
+ schedule:
+  - cron : 0 8 * * * 
+  
 name: scraping Portal Abierto - SINADEF
 
 jobs:
